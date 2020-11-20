@@ -1,0 +1,12 @@
+<div class="border border-primary rounded" *ngIf="getPersonnesEmbauchees().length != 0">
+<ul class="list-group list-group-horizontal">
+    <li class="list-group-item"
+    *ngFor="let personne of getPersonnesEmbauchees()"
+    >
+      <img src="assets/images/{{personne.path| defaultImage}}" alt="photo" class="rounded-circle" width="50px"
+           heigth="50px">
+      {{personne.firstname}} {{personne.name}}
+    </li>
+
+</ul>
+</div>

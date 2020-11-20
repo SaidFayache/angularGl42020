@@ -2,6 +2,7 @@ import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { TodoService } from 'src/app/todo/services/todo.service';
 import { Personne } from '../../model/personne';
+import {CvService} from '../../service/cv-service.service';
 
 @Component({
   selector: 'app-cv',
@@ -11,13 +12,15 @@ import { Personne } from '../../model/personne';
 export class CvComponent implements OnInit {
   selectedPersonne: Personne;
   constructor(
-    private todoService: TodoService
+    private todoService: TodoService,
+    private cvService: CvService
   ) { }
 
   ngOnInit(): void {
   }
-  catchSelectedPersonne(forwardedPersonne: Personne) {
-    this.selectedPersonne = forwardedPersonne;
+  catchSelectedPersonne(forwardedPersonneId: number) {
+    this.selectedPersonne = this.cvService.getPersonne(forwardedPersonneId);
+    console.log(forwardedPersonneId);
     this.todoService.logger();
   }
 
