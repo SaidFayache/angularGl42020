@@ -11,7 +11,13 @@ export class EmbaucheService {
 
   embaucherPersonne(personne: Personne)
   {
-    this.personnesEmbauchees.push(personne);
+    if (this.personnesEmbauchees.filter(p => p.id === personne.id)[0])
+    {
+      alert('Personne deja présente dans la liste');
+    }
+    else {
+      this.personnesEmbauchees.push(personne);
+    }
   }
   getPersonnesEmbauchees(): Personne[]
   {
