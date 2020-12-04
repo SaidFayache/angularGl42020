@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { distinctUntilChanged } from 'rxjs/operators';
 import { Personne } from '../../model/personne';
-import {EmbaucheService} from '../../embauche/services/embauche.service';
+import { CvService } from '../../services/cv.service';
+import { EmbaucheService } from './../../../embauche/services/embauche.service';
 
 @Component({
   selector: 'app-detail',
@@ -9,11 +11,19 @@ import {EmbaucheService} from '../../embauche/services/embauche.service';
 })
 export class DetailComponent implements OnInit {
   @Input() personne: Personne = null;
-  constructor(private embaucheService: EmbaucheService) {}
+  constructor(
+    private embaucheService: EmbaucheService,
+    private cvService: CvService
+  ) {}
 
-  ngOnInit(): void {}
-  embaucherPersonne(personne: Personne)
-  {
-    this.embaucheService.embaucherPersonne(personne);
+  ngOnInit(): void {
+    this.cvService.selectPersonneSubject
+      .pipe(distinctUntilChanged())
+      .subscribe((personne) => (this.personne = personne));
+  }
+  embaucher() {
+    if (!this.embaucheService.embaucher(this.personne)) {
+      alert(`${this.personne.name} est déjà embauché`);
+    }
   }
 }

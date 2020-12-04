@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
@@ -26,7 +27,15 @@ import { LoggerService } from './services/logger.service';
 import { DefaultImagePipe } from './pipes/default-image.pipe';
 import { TodoComponent } from './todo/pages/todo/todo.component';
 import { HeaderComponent } from './components/header/header.component';
-import { EmbaucheComponent } from './cv/embauche/components/embauche/embauche.component';
+import { EmbaucheComponent } from './embauche/components/embauche/embauche.component';
+import { LoginComponent } from './pages/login/login.component';
+import { AdminComponent } from './admin/admin.component';
+import { FrontComponent } from './front/front.component';
+import { NF404Component } from './nf404/nf404.component';
+import { TestNestComponent } from './test-nest/test-nest.component';
+import { TestFormComponent } from './test-form/test-form.component';
+import { ObservableTestComponent } from './observable-test/observable-test.component';
+import { TestHttpComponent } from './components/test-http/test-http.component';
 
 @NgModule({
   declarations: [
@@ -53,8 +62,16 @@ import { EmbaucheComponent } from './cv/embauche/components/embauche/embauche.co
     TodoComponent,
     HeaderComponent,
     EmbaucheComponent,
+    LoginComponent,
+    AdminComponent,
+    FrontComponent,
+    NF404Component,
+    TestNestComponent,
+    TestFormComponent,
+    ObservableTestComponent,
+    TestHttpComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })
